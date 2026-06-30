@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/subway/:path*",
+      "destination": "http://swopenapi.seoul.go.kr/api/subway/:path*"
+    },
+    {
+      "source": "/sk-api/:path*",
+      "destination": "https://apis.openapi.sk.com/:path*"
+    }
+  ]
+}
