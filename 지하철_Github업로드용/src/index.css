@@ -1,0 +1,157 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  /* Standard iOS Dark Mode */
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --text-primary: #ffffff;
+  --text-secondary: #8e8e93;
+  --accent: #0a84ff;
+  --border: #38383a;
+  
+  --congestion-low: #34c759;
+  --congestion-mid: #ff9500;
+  --congestion-high: #ff3b30;
+}
+
+:root[data-theme='light'] {
+  /* Standard iOS Light Mode */
+  --bg-primary: #f2f2f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #8e8e93;
+  --accent: #007aff;
+  --border: #e5e5ea;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Remove the mesh gradient animation entirely for a clean, minimal look */
+body::before {
+  content: none;
+}
+
+@keyframes meshAnim {
+  0% { transform: scale(1) translate(0, 0); }
+  33% { transform: scale(1.1) translate(3%, 5%); }
+  66% { transform: scale(1.05) translate(-2%, 4%); }
+  100% { transform: scale(1.15) translate(2%, -3%); }
+}
+
+#root {
+  width: 100%;
+  max-width: 480px;
+  background-color: transparent;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Drag Handle for Bottom Sheets */
+.drag-handle {
+  width: 36px;
+  height: 5px;
+  background-color: var(--text-secondary);
+  opacity: 0.25;
+  border-radius: 3px;
+  margin: 0 auto 20px auto;
+}
+
+/* Standard UI Components */
+.glass-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.glass-nav {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.glass-button {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Interactive scale down on active (Haptic feel) */
+button:active {
+  transform: scale(0.95);
+}
+
+.glass-button:active {
+  transform: scale(0.95);
+}
+
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
